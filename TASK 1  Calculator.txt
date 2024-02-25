@@ -1,0 +1,76 @@
+package com.codtech;
+import java.util.Scanner;
+public class Calculator {
+
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        char choice;
+        do {
+            System.out.println("Select operation:");
+            System.out.println("1. Addition");
+            System.out.println("2. Subtraction");
+            System.out.println("3. Multiplication");
+            System.out.println("4. Division");
+            System.out.print("Enter your choice (1/2/3/4): ");
+            int operation = scan.nextInt();
+
+            switch (operation) {
+                case 1:
+                    performAddition(scan);
+                    break;
+                case 2:
+                    performSubtraction(scan);
+                    break;
+                case 3:
+                    performMultiplication(scan);
+                    break;
+                case 4:
+                    performDivision(scan);
+                    break;
+                default:
+                    System.out.println("Invalid choice!");
+            }
+
+            System.out.print("Do you want to perform another calculation? (y/n): ");
+            choice = scan.next().charAt(0);
+        } while (choice == 'y' || choice == 'Y');
+
+        scan.close();
+    }
+
+    public static void performAddition(Scanner scan) {
+        System.out.print("Enter first number: ");
+        int a = scan.nextInt();
+        System.out.print("Enter second number: ");
+        int b = scan.nextInt();
+        System.out.println("Addition of " + a + " and " + b + " is : " + (a + b));
+    }
+
+    public static void performSubtraction(Scanner scan) {
+        System.out.print("Enter first number: ");
+        int c = scan.nextInt();
+        System.out.print("Enter second number: ");
+        int d = scan.nextInt();
+        System.out.println("Subtraction of " + c + " and " + d + " is : " + (c - d));
+    }
+
+    public static void performMultiplication(Scanner scan) {
+        System.out.print("Enter first number: ");
+        int e = scan.nextInt();
+        System.out.print("Enter second number: ");
+        int f = scan.nextInt();
+        System.out.println("Multiplication of " + e + " and " + f + " is : " + (e * f));
+    }
+
+    public static void performDivision(Scanner scan) {
+        System.out.print("Enter numerator: ");
+        int g = scan.nextInt();
+        System.out.print("Enter denominator: ");
+        int h = scan.nextInt();
+        if (h == 0) {
+            System.out.println("Cannot divide by zero!");
+        } else {
+            System.out.println("Division of " + g + " by " + h + " is : " + ((double) g / h));
+        }
+    }
+}

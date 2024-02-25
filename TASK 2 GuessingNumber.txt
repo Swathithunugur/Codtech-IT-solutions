@@ -1,0 +1,43 @@
+package com.codtech;
+	import java.util.Scanner;
+	import java.util.Random;
+	public class GuessingGame {
+	    public static void main(String[] args) {
+	        Scanner scanner = new Scanner(System.in);
+	        Random random = new Random();
+	        int lowerBound = 1;
+	        int upperBound = 100;
+	        int attempts = 10; // Maximum number of attempts allowed
+	        int targetNumber = random.nextInt(upperBound) + lowerBound;
+
+	        System.out.println("Welcome to the Guessing Game!");
+	        System.out.println(" targeted number :" + targetNumber);
+	        System.out.println("I've selected a number between " + lowerBound + " and " + upperBound + ".");
+	        System.out.println("You have " + attempts + " attempts to guess it.");
+
+	        int guess;
+	        boolean guessedCorrectly = false;
+
+	        while (attempts > 0 && !guessedCorrectly) {
+	            System.out.print("Enter your guess: ");
+	            guess = scanner.nextInt();
+	            attempts--;
+
+	            if (guess == targetNumber) {
+	                System.out.println("Congratulations! You've guessed the number correctly: " + targetNumber);
+	                guessedCorrectly = true;
+	            } else if (guess < targetNumber) {
+	                System.out.println("Too low! Try again. Attempts left: " + attempts);
+	            } else {
+	                System.out.println("Too high! Try again. Attempts left: " + attempts);
+	            }
+	        }
+
+	        
+	        if (!guessedCorrectly) {
+	            System.out.println("Sorry, you've used all your attempts. The number was: " + targetNumber);
+	        }
+
+	        scanner.close();
+	    }
+	}
